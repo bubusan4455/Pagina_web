@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicio Técnico de Electrodomésticos</title>
+    <!-- Google Fonts (mismas que el original) -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Poppins:wght@400;600;700&family=Lato:wght@400;700&display=swap"
+        rel="stylesheet">
+   <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.5;
+            color: #000000;
+            background: #fff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky; /* ← CORREGIDO: se queda fijo al hacer scroll */
+            top: 0;
+            z-index: 1000;
+            padding: 10px 0;
+        }
+
+        .header .container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo img {
+            max-height: 80px;
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 70px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #000000;
+            font-weight: 500;
+            transition: 0.3s;
+            font-family: "Poppins", Sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .nav-menu a:hover {
+            color: #000000;
+        }
+
+        .btn-header {
+            background: #092E58;
+            color: white;
+            padding: 10px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-wrapper {
+            display: flex;
+            justify-content: center;
+        }
+
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: #25D366;
+            color: #fff;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-size: 20px;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-2px);
+            background: #1ebe5d;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-whatsapp .icon {
+            display: flex;
+            align-items: center;
+        }
+
+        .mobile-menu-icon {
+            display: none;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        /* Botones generales */
+        .btn {
+            display: flex;
+            flex-direction: row;
+            background: #25D366;
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            min-height: initial;
+        }
+
+        .btn-WT1 {
+            background: #25D366;
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            min-height: initial;
+        }
+
+        .btn-wt {
+            display: flex;
+            flex-direction: row;
+            background: #25D366;
+            color: #f68d18;
+            padding: 16px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            align-items: center;
+        }
+
+        .btn-secondary {
+            background: #f68d18;
+        }
+
+        .btn-secondary-1 {
+            background: #ffffff;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #25D366;
+            color: #25D366;
+        }
+
+        .btn-outline:hover {
+            background: #25D366;
+            color: white;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+        }
+
+        /* Hero */
+        .hero {
+            background-image: url("imagenes/Portada.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 80px 20px;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: left;
+            position: relative;
+        }
+
+        .hero h1 {
+            width: 80%;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            font-family: 'open sans', sans-serif;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 20 auto;
+        }
+
+        .contenedor {
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .contenedor h2 {
+            font-size: 32px;
+            font-weight: bold;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: left;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .hero-buttons-1 {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .bloque-atencion {
+            background: linear-gradient(90deg, #000000, #111);
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .bloque-atencion h2 {
+            color: #fff;
+            font-size: 32px;
+            font-weight: 800;
+            margin: 0;
+        }
+
+        /* Secciones */
+        section {
+            padding: 40px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            color: #092E58;
+            font-family: 'open sans', sans-serif;
+        }
+
+        .section-title-1 {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            color: #ffffff;
+            font-family: 'open sans', sans-serif;
+        }
+
+        .parrafos-text {
+            font-family: "open sans", sans-serif;
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #000000;
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 0.9rem;
+            box-sizing: border-box;
+        }
+
+        .parrafos-text-2 {
+            font-family: "open sans", sans-serif;
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #000000;
+            margin-top: 0;
+            margin-bottom: 0.9rem;
+            box-sizing: border-box;
+        }
+
+        .parrafos-text-3 {
+            font-family: "open sans", sans-serif;
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #000000;
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 0.9rem;
+            box-sizing: border-box;
+        }
+
+        .parrafos-text-4 {
+            font-family: "open sans", sans-serif;
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #000000;
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 0.9rem;
+            box-sizing: border-box;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 50px;
+            color: #000000;
+            font-size: 1.1rem;
+        }
+
+        /* Grids */
+        .grid-3 {
+            margin-top: 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 30px;
+        }
+
+        /* Tarjetas de servicio */
+        .service-card {
+            background: #fa9302;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: 0.3s;
+            text-align: center;
+            border: 1px solid #eee;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-card img {
+            width: 90%;
+            height: 170px;
+            object-fit: cover;
+            margin-block: 15px 15px;
+            border-radius: 20px;
+        }
+
+        .service-card h3 {
+            margin: 20px 0 10px;
+            font-size: 1.3rem;
+        }
+
+        .service-card p {
+            padding: 0 15px 20px;
+            color: #000000;
+        }
+
+        .service-card .btn {
+            padding-inline: 100px;
+            font-size: 125%;
+            margin-top: auto;
+            margin-bottom: 20px;
+            align-self: center;
+        }
+
+        /* Ventajas (iconos) */
+        .advantage {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .advantage .icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .advantage h3 {
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        /* Testimonios */
+        .testimonial {
+            background: #f9f9f9;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .testimonial img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        .testimonial p {
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .testimonial h4 {
+            color: #1a6b4e;
+        }
+
+        /* Acordeón FAQ */
+        .accordion {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .accordion details {
+            background: #fff;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .accordion summary {
+            padding: 18px 22px;
+            font-weight: 600;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.05rem;
+        }
+
+        .accordion summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .accordion summary::after {
+            content: '+';
+            font-size: 24px;
+            font-weight: normal;
+            color: #1a6b4e;
+        }
+
+        .accordion details[open] summary::after {
+            content: '-';
+        }
+
+        .accordion .answer {
+            padding: 0 22px 22px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* Contacto final */
+        .contact-section {
+            background: #fa9302;
+            text-align: center;
+            font-family: open sans-serif;
+            font-size: 24px;
+            font-weight: 400;
+            color: white;
+        }
+
+        /* Footer */
+        .footer {
+            background: #ffffff;
+            color: rgb(0, 0, 0);
+            text-align: center;
+            padding: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        /* Botón flotante WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25D366;
+            border-radius: 50%;
+            padding: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+            z-index: 1000;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.05);
+        }
+
+        .whatsapp-float img {
+            width: 45px;
+            height: 45px;
+            display: block;
+        }
+
+        /* ============================================ */
+        /* === MEDIA QUERIES MEJORADAS PARA MÓVIL === */
+        /* ============================================ */
+
+        /* Tablets y móviles grandes (hasta 992px) */
+        @media (max-width: 992px) {
+            .nav-menu {
+                gap: 30px;
+            }
+            
+            .nav-menu a {
+                font-size: 16px;
+            }
+            
+            .hero h1 {
+                width: 100%;
+                font-size: 1.8rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Móviles (hasta 768px) */
+        @media (max-width: 768px) {
+            /* Menú hamburguesa */
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background: white;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                gap: 15px;
+                text-align: center;
+                z-index: 999;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .mobile-menu-icon {
+                display: block;
+            }
+
+            .btn-header {
+                margin-top: 0;
+            }
+
+            /* Header */
+            .header .container {
+                flex-wrap: wrap;
+            }
+            
+            .logo img {
+                max-height: 55px;
+            }
+
+            /* Hero */
+            .hero {
+                padding: 50px 20px;
+                text-align: center;
+            }
+            
+            .hero h1 {
+                font-size: 1.4rem;
+                width: 100%;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+                margin: 0 auto 20px;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            /* Contenedor atención */
+            .contenedor h2 {
+                font-size: 1.3rem;
+            }
+
+            /* Secciones */
+            section {
+                padding: 30px 0;
+            }
+            
+            .section-title, .section-title-1 {
+                font-size: 1.6rem;
+            }
+            
+            /* Textos */
+            .parrafos-text, .parrafos-text-2, .parrafos-text-3, .parrafos-text-4 {
+                font-size: 1rem;
+                padding: 0 10px;
+            }
+            
+            /* Grids - una sola columna en móvil */
+            .grid-3, .grid-4 {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            /* Tarjetas de servicio */
+            .service-card img {
+                height: 150px;
+                width: 85%;
+            }
+            
+            .service-card .btn {
+                padding-inline: 50px;
+                font-size: 1rem;
+                width: 80%;
+            }
+            
+            .service-card h3 {
+                font-size: 1.2rem;
+            }
+            
+            /* Ventajas */
+            .advantage {
+                padding: 15px;
+            }
+            
+            .advantage h3 {
+                font-size: 1.2rem;
+            }
+            
+            /* Testimonios */
+            .testimonial {
+                padding: 20px;
+            }
+            
+            /* Acordeón */
+            .accordion summary {
+                padding: 14px 18px;
+                font-size: 0.95rem;
+            }
+            
+            .accordion .answer {
+                padding: 0 18px 18px;
+                font-size: 0.9rem;
+            }
+            
+            /* Botones */
+            .btn-whatsapp {
+                padding: 12px 24px;
+                font-size: 1rem;
+            }
+            
+            .btn-wt {
+                padding: 12px 20px;
+                font-size: 1rem;
+            }
+            
+            /* Contacto */
+            .contact-section {
+                font-size: 1rem;
+                padding: 30px 20px;
+            }
+            
+            .contact-section p {
+                font-size: 1rem;
+            }
+            
+            .hero-buttons-1 {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .hero-buttons-1 a {
+                width: 80%;
+                justify-content: center;
+            }
+            
+            /* WhatsApp flotante */
+            .whatsapp-float {
+                bottom: 15px;
+                right: 15px;
+                padding: 10px;
+            }
+            
+            .whatsapp-float img {
+                width: 35px;
+                height: 35px;
+            }
+            
+            /* Footer */
+            .footer {
+                padding: 20px;
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Móviles muy pequeños (hasta 480px) */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .hero h1 {
+                font-size: 1.2rem;
+            }
+            
+            .hero p {
+                font-size: 0.9rem;
+            }
+            
+            .section-title, .section-title-1 {
+                font-size: 1.4rem;
+            }
+            
+            .parrafos-text, .parrafos-text-2, .parrafos-text-3, .parrafos-text-4 {
+                font-size: 0.9rem;
+            }
+            
+            .btn, .btn-whatsapp, .btn-header {
+                padding: 10px 18px;
+                font-size: 0.9rem;
+            }
+            
+            .hero-buttons, .hero-buttons-1 {
+                gap: 12px;
+            }
+            
+            
+            .service-card .btn {
+                width: 40%;
+            }
+            
+            .contenedor h2 {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Ajuste para la sección "Quiénes Somos" (imagen + texto) */
+        @media (max-width: 768px) {
+            #quienes .container > div {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            #quienes img {
+                width: 60% !important;
+                max-width: 250px;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="logo 2.png" alt="Logo">
+            </div>
+           
+            <a href="#servicios" class="btn-header">Ver Servicios</a>
+             <div class="mobile-menu-icon" id="menuToggle">☰</div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#quienes">Quiénes Somos</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#ventajas">¿Por qué elegirnos?</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero -->
+        <section class="hero">
+
+            <div class="container">
+                <h1>En nuestro servicio técnico nos especializamos en el mantenimiento, reparación e instalación de todo
+                    tipo de electrodomésticos, brindando soluciones rápidas, seguras y confiables para tu hogar o
+                    negocio</h1>
+                <p>Servicio técnico especializado en neveras, lavadoras, secadoras, aires acondicionados, estufas y
+                    calentadores. Soluciones rápidas y garantizadas.</p>
+                <div class="hero-buttons">
+                    <a href="https://wa.me/573237211067" class="btn" target="_blank">Solicitar por WhatsApp</a>
+                    <a href="tel:+1234567890" class="btn btn-secondary">Llamar Ahora</a>
+                </div>
+                <div class="elementor-element elementor-element-b71f0d8 e-flex e-con-boxed e-con e-parent e-lazyloaded"
+                    data-id="b71f0d8" data-element_type="container" data-e-type="container"
+                    data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+                    <div class="e-con-inner">
+                        <div class="elementor-element elementor-element-c7c09b8 elementor-widget elementor-widget-heading"
+                            data-id="c7c09b8" data-element_type="widget" data-e-type="widget"
+                            data-widget_type="heading.default">
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+        </section>
+        <div class="contenedor">
+            <h2>Atención Lunes a Domingo 24 Horas</h2>
+        </div>
+        <!-- Quiénes Somos -->
+        <section id="quienes">
+            <div class="container">
+                <h2 class="section-title">Quiénes Somos</h2>
+                <p class="parrafos-text">Somos un equipo de técnicos especializados en el mantenimiento, reparación e
+                    instalación de todo tipo de electrodomésticos.
+                </p>
+
+                <div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: center;">
+                    <div style="flex: 1;text-align: center;">
+                        <img src="logo.jpeg" alt="Nuestro equipo" style="width: 50%; border-radius: 20px;">
+                    </div>
+
+                    <div style="flex: 1;">
+                        <p class="parrafos-text-2">Contamos con experiencia en el sector y un fuerte compromiso con la
+                            calidad del servicio, lo que nos permite ofrecer soluciones eficientes y duraderas a cada
+                            uno de nuestros clientes.Nos enfocamos en ofrecer atención personalizada y precios justos,
+                            generando confianza en cada servicio.</p>
+                        <p class="parrafos-text-2">Atendemos a domicilio en toda la ciudad de Bogotá y zonas aledañas,
+                            con rapidez y total transparencia en precios.</p>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Servicios -->
+        <section id="servicios" style="background: #fafafa;">
+            <div class="container">
+                <h2 class="section-title">Nuestros Servicios</h2>
+                <p class="parrafos-text">Ofrecemos soluciones integrales para el cuidado, mantenimiento y reparación de
+                    tus electrodomésticos, asegurando un funcionamiento óptimo y prolongando su vida útil. <br>
+                <div class="grid-3">
+                    <div class="service-card">
+                        <img src="lavadora.jpg" alt="Lavadoras">
+                        <h3>Reparación de Lavadoras y Secadoras</h3>
+                        <p>Solucionamos problemas de centrifugado, fugas de agua, fallas eléctricas en todo tipo de
+                            marcas.</p>
+                        <a href="https://wa.me/573237211067" class="btn">Solicitar</a>
+                    </div>
+                    <div class="service-card">
+                        <img src="horno.jpg" alt="horno">
+                        <h3>Reparación de Estufas y Hornos</h3>
+                        <p>Solucionamos fallas en el encendido, quemadores, válvulas de gas, control de temperatura y
+                            funcionamiento general.</p>
+                        <a href="https://wa.me/573237211067" class="btn">Solicitar</a>
+                    </div>
+                    <div class="service-card">
+                        <img src="neveras.jpg" alt="nevera">
+                        <h3>Reparación de Neveras y Nevecones</h3>
+                        <p>Diagnosticamos y reparamos problemas de enfriamiento, fugas de gas, exceso de escarcha,
+                            ruidos inusuales y fallas en el compresor.</p>
+                        <a href="https://wa.me/573237211067" class="btn">Solicitar</a>
+                    </div>
+                    <div class="service-card">
+                        <img src="aire.jpg" alt="Aire acondicionado">
+                        <h3>Reparación de Aires Acondicionados</h3>
+                        <p>Realizamos instalación, mantenimiento, recarga de gas, limpieza y solución de fallas
+                            eléctricas o de rendimiento.</p>
+                        <a href="https://wa.me/573237211067" class="btn">Solicitar</a>
+                    </div>
+                    <div class="service-card">
+                        <img src="gas.jpg" alt="Calentadores">
+                        <h3>Reparación de Calentadores a Gas</h3>
+                        <p>Atendemos problemas de encendido, baja presión de agua caliente, fugas y fallas en el sistema
+                            de calentamiento.</p>
+                        <a href="https://wa.me/573237211067" class="btn">Solicitar</a>
+                    </div>
+                    <div class="service-card">
+                        <img src="lavavajilla.jpg" alt="Lavavajillas">
+                        <h3>Reparación de Lavavajillas</h3>
+                        <p>Solucionamos problemas de lavado deficiente, fugas de agua, fallas en el drenaje, ruidos
+                            extraños y errores electrónicos.</p>
+                        <a href="https://wa.me/573237211067" class="btn">Solicitar</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ventajas -->
+        <section id="ventajas">
+            <div class="container">
+                <h2 class="section-title">¿Por qué elegirnos?</h2>
+                <p class="parrafos-text-3">Elegirnos es confiar en un servicio técnico responsable, eficiente y
+                    comprometido con la satisfacción de cada cliente. Nos destacamos por ofrecer soluciones reales,
+                    rápidas y con garantía, siempre cuidando tus electrodomésticos como si fueran propios.</p>
+                <div class="grid-4">
+                    <div class="advantage">
+                        <div class="icon">👨‍🔧</div>
+                        <h3>Técnicos Certificados</h3>
+                        <p>Contamos con personal capacitado y con experiencia en diferentes marcas y modelos.</p>
+                    </div>
+                    <div class="advantage">
+                        <div class="icon">🔍</div>
+                        <h3>Diagnóstico preciso:</h3>
+                        <p>Identificamos el problema desde la raíz para ofrecer soluciones duraderas.</p>
+                    </div>
+                    <div class="advantage">
+                        <div class="icon">⚙️</div>
+                        <h3>Repuestos Originales</h3>
+                        <p>Utilizamos piezas de alta calidad y repuestos originales para asegurar un funcionamiento
+                            óptimo y duradero.</p>
+                    </div>
+                    <div class="advantage">
+                        <div class="icon">💰</div>
+                        <h3>Precios justos y transparentes</h3>
+                        <p>Sin costos ocultos, te informamos antes de realizar cualquier trabajo..</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="elementor-widget-container btn-wrapper" style="text-align:center;">
+
+            <a href="https://wa.me/573237211067" class="btn-whatsapp" target="_blank">
+
+                <span class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="22" height="22">
+                        <path fill="#ffffff"
+                            d="M16 .396C7.163.396 0 7.56 0 16.396c0 2.893.756 5.61 2.07 7.965L0 32l7.83-2.052A15.91 15.91 0 0016 31.604c8.837 0 16-7.164 16-16S24.837.396 16 .396zm0 29.208c-2.556 0-5.06-.67-7.256-1.94l-.52-.31-4.65 1.22 1.24-4.53-.338-.552A13.54 13.54 0 012.46 16.396c0-7.47 6.07-13.54 13.54-13.54s13.54 6.07 13.54 13.54-6.07 13.54-13.54 13.54zm7.437-10.167c-.406-.203-2.4-1.183-2.77-1.32-.37-.136-.64-.203-.91.203-.27.406-1.05 1.32-1.29 1.593-.237.27-.474.304-.88.102-.406-.203-1.715-.632-3.266-2.014-1.207-1.076-2.02-2.404-2.257-2.81-.237-.406-.025-.625.178-.828.182-.18.406-.474.61-.71.203-.237.27-.406.406-.676.136-.27.068-.507-.034-.71-.102-.203-.91-2.193-1.246-3.005-.328-.787-.66-.68-.91-.693l-.778-.014c-.27 0-.71.102-1.08.507-.37.406-1.42 1.386-1.42 3.38 0 1.995 1.455 3.92 1.658 4.19.203.27 2.866 4.375 6.947 6.136.972.42 1.73.67 2.32.857.975.31 1.864.266 2.566.16.783-.117 2.4-.98 2.74-1.926.338-.947.338-1.758.237-1.926-.102-.17-.37-.27-.778-.474z" />
+                    </svg>
+                </span>
+
+                <span>Contáctanos por WhatsApp</span>
+
+            </a>
+
+        </div>
+
+
+
+        <!-- Testimonios -->
+        <section style="background: #f0f7f4;">
+
+            <div class="container">
+                <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+                <p class="parrafos-text-4">La satisfacción de nuestros clientes es nuestra mayor garantía. Cada servicio
+                    que realizamos está enfocado en brindar soluciones efectivas, rápidas y confiables, y esto se
+                    refleja en las opiniones de quienes ya han confiado en nosotros.</p>
+                <div class="grid-3">
+                    <div class="testimonial">
+                        <img src="foto mujer.png" alt="Cliente">
+                        <p>"Excelente servicio, muy puntuales y solucionaron la falla de mi lavadora el mismo día. Muy
+                            profesionales."</p>
+                        <h4>Fernanda Gomez</h4>
+                    </div>
+                    <div class="testimonial">
+                        <img src="hombre 2.png" alt="Cliente">
+                        <p>"Quedé muy satisfecho con la reparación de mi nevera. Me explicaron todo el proceso y
+                            utilizaron repuestos de calidad. Totalmente recomendados."</p>
+                        <h4>Juan Lopez</h4>
+                    </div>
+                    <div class="testimonial">
+                        <img src="hombre.png" alt="Cliente">
+                        <p>"Contraté mantenimiento de aire acondicionado a domicilio, fueron rápidos y lo mejor con
+                            garantía. Mi aire acondicionado quedó perfecto... Recomiendo sus servicios."</p>
+                        <h4>Rosa Perea</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Preguntas Frecuentes (Acordeón) -->
+        <section>
+            <div class="container">
+                <h2 class="section-title">Preguntas Frecuentes</h2>
+                <div class="accordion">
+                    <details>
+                        <summary>¿Cuánto tiempo tarda la reparación?</summary>
+                        <div class="answer">La mayoría de las reparaciones se realizan el mismo día de la visita. Si
+                            requiere repuestos especiales, puede demorar 24-48 horas adicionales.</div>
+                    </details>
+                    <details>
+                        <summary>¿Qué marcas de electrodomésticos reparan?</summary>
+                        <div class="answer">Trabajamos con una amplia variedad de marcas de electrodomésticos
+                            reconocidas a nivel nacional e internacional, lo que nos permite ofrecer un servicio técnico
+                            confiable y especializado sin importar el modelo de tu equipo. Nuestro personal está
+                            capacitado para diagnosticar y reparar diferentes tipos de electrodomésticos, garantizando
+                            soluciones efectivas y duraderas.
+
+                            Atendemos marcas como Samsung, LG, Whirlpool, General Electric (GE), Bosch, Electrolux,
+                            Mabe, Haceb, Challenger, Centrales, Frigidaire, KitchenAid, Maytag, Daewoo, Hisense,
+                            Indurama, Kalley, Abba, Carrier, York, Panasonic, Daikin y Mitsubishi Electric, entre muchas
+                            otras.</div>
+                    </details>
+                    <details>
+                        <summary>¿Atienden fuera de las ciudades principales?</summary>
+                        <div class="answer">Ofrecemos atención no solo en la ciudad de Bogotá, sino también en zonas
+                            aledañas, brindando un servicio técnico rápido y confiable directamente en tu hogar.
+
+                            Atendemos en Bogotá y municipios cercanos como Soacha, Chía, Tocancipá, Cajicá, Zipaquirá,
+                            Mosquera, Funza, Madrid y alrededores.
+
+                            Nuestro objetivo es llegar hasta donde nos necesites, garantizando la misma calidad,
+                            puntualidad y compromiso en cada servicio, sin importar la ubicación.</div>
+                    </details>
+                    <details>
+                        <summary>¿Qué formas de pago aceptan?</summary>
+                        <div class="answer">Efectivo, transferencia bancaria, tarjetas débito/crédito, Nequi, Daviplata.
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contacto final -->
+        <section id="contacto" class="contact-section">
+            <div class="container">
+                <h2 class="section-title-1">¿Tu electrodoméstico necesita reparación?</h2>
+                <p>Nosotros tenemos la solución. Agenda tu servicio ahora y vuelve a disfrutar de tus equipos como
+                    nuevos.</p>
+                <div class="hero-buttons-1" style="margin-top: 30px;">
+                    <a href="https://wa.me/573237211067" class="btn-whatsapp" target="_blank">
+
+                        <span class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="22" height="22">
+                                <path fill="#ffffff"
+                                    d="M16 .396C7.163.396 0 7.56 0 16.396c0 2.893.756 5.61 2.07 7.965L0 32l7.83-2.052A15.91 15.91 0 0016 31.604c8.837 0 16-7.164 16-16S24.837.396 16 .396zm0 29.208c-2.556 0-5.06-.67-7.256-1.94l-.52-.31-4.65 1.22 1.24-4.53-.338-.552A13.54 13.54 0 012.46 16.396c0-7.47 6.07-13.54 13.54-13.54s13.54 6.07 13.54 13.54-6.07 13.54-13.54 13.54zm7.437-10.167c-.406-.203-2.4-1.183-2.77-1.32-.37-.136-.64-.203-.91.203-.27.406-1.05 1.32-1.29 1.593-.237.27-.474.304-.88.102-.406-.203-1.715-.632-3.266-2.014-1.207-1.076-2.02-2.404-2.257-2.81-.237-.406-.025-.625.178-.828.182-.18.406-.474.61-.71.203-.237.27-.406.406-.676.136-.27.068-.507-.034-.71-.102-.203-.91-2.193-1.246-3.005-.328-.787-.66-.68-.91-.693l-.778-.014c-.27 0-.71.102-1.08.507-.37.406-1.42 1.386-1.42 3.38 0 1.995 1.455 3.92 1.658 4.19.203.27 2.866 4.375 6.947 6.136.972.42 1.73.67 2.32.857.975.31 1.864.266 2.566.16.783-.117 2.4-.98 2.74-1.926.338-.947.338-1.758.237-1.926-.102-.17-.37-.27-.778-.474z" />
+                            </svg>
+                        </span>
+
+                        <span>Solicitar ahora</span>
+
+                    </a>
+                    <a href="tel:573237211067" class="btn-wt btn-secondary-1">Llamar ahora</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <!-- Botón flotante de WhatsApp -->
+    <a href="https://wa.me/573237211067" class="whatsapp-float" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    </a>
+
+    <script>
+        // Menú responsive
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+            });
+        }
+
+        // Smooth scroll para enlaces internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                const target = document.querySelector(targetId);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    if (navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                    }
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
